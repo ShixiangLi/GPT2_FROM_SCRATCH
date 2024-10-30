@@ -1,6 +1,11 @@
 # GPT2_FROM_SCRATCH
 从头开始实现一个GPT2
 
+## 环境（4090）
+- Python：3.9
+- CUDA：11.8
+- Pytorch：2.0.1+cu118
+
 ### 2024/10/29：首次上传，实现从头训练，差微调代码
 - main.py：训练代码
 - dataset.py：数据集相关代码
