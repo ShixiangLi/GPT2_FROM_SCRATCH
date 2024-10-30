@@ -6,13 +6,15 @@ import sys
 import os
 from datetime import datetime
 
+import torch.ao.quantization
+
 from gpt2 import GPTModel
 from dataset import *
 from utils import *
 from config import CONFIG
 from gpt_download import download_and_load_gpt2
 
-parser = argparse.ArgumentParser("gpt2")
+parser = argparse.ArgumentParser("gpt2_from")
 parser.add_argument('--train_from_scratch', type=bool, default=1, help='train from scratch')
 parser.add_argument('--model', type=str, default='GPT_CONFIG_124M', help='model name')
 parser.add_argument('--model_size', type=str, default='124M', help='model size')

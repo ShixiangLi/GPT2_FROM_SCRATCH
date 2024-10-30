@@ -9,3 +9,6 @@
 - gpt2.py：GPT2建模文件
 - utils.py：相关工具函数
 - gpt_download.py：预训练参数下载
+
+### 2024/10/30：更新分类微调
+- main_finetune_classifier.py：基于GPT2预训练结果进行垃圾邮件分类任务微调
