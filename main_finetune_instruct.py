@@ -38,6 +38,8 @@ parser.add_argument('--drop_path_prob', type=float, default=0.2, help='drop path
 parser.add_argument('--seed', type=int, default=123, help='random seed')
 parser.add_argument('--arch', type=str, default='DARTS', help='which architecture to use')
 parser.add_argument('--grad_clip', type=float, default=5, help='gradient clipping')
+parser.add_argument('--llm_to_evaluate', type=str, default='qwen2.5-7b', help='llm')
+
 args = parser.parse_args()
 
 def train_model_simple(model, train_loader, val_loader, optimizer, device, num_epochs, eval_freq, eval_iter, start_context, tokenizer):
@@ -241,11 +243,11 @@ def main():
         print("\nModel response:")
         print(">>", entry["model_response"])
         print("\nScore:")
-        print(">>", query_model(prompt))
+        print(">>", query_model(prompt, model=args.llm_to_evaluate))
         print("\n-------------------------")
 
     # Generate model scores
-    scores = generate_model_scores(test_data, "model_response")
+    scores = generate_model_scores(test_data, "model_response", model=args.llm_to_evaluate)
     print(f"Number of scores: {len(scores)} of {len(test_data)}")
     print(f"Average score: {sum(scores)/len(scores):.2f}\n")
 
